@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Lotte\\Documents\\GitHub\\DAT154Oblig4HotelProject\\FrontDesk\\FrontDesk.csproj": {}
+    "C:\\Users\\Admin\\OneDrive\\Skole\\HVL\\6 Semester\\DAT154\\Assignment 4\\HotelFrontDeskApp\\FrontDesk\\FrontDesk.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Lotte\\Documents\\GitHub\\DAT154Oblig4HotelProject\\FrontDesk\\FrontDesk.csproj": {
+    "C:\\Users\\Admin\\OneDrive\\Skole\\HVL\\6 Semester\\DAT154\\Assignment 4\\HotelFrontDeskApp\\FrontDesk\\FrontDesk.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lotte\\Documents\\GitHub\\DAT154Oblig4HotelProject\\FrontDesk\\FrontDesk.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\OneDrive\\Skole\\HVL\\6 Semester\\DAT154\\Assignment 4\\HotelFrontDeskApp\\FrontDesk\\FrontDesk.csproj",
         "projectName": "FrontDesk",
-        "projectPath": "C:\\Users\\Lotte\\Documents\\GitHub\\DAT154Oblig4HotelProject\\FrontDesk\\FrontDesk.csproj",
-        "packagesPath": "C:\\Users\\Lotte\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lotte\\Documents\\GitHub\\DAT154Oblig4HotelProject\\FrontDesk\\obj\\",
+        "projectPath": "C:\\Users\\Admin\\OneDrive\\Skole\\HVL\\6 Semester\\DAT154\\Assignment 4\\HotelFrontDeskApp\\FrontDesk\\FrontDesk.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Admin\\OneDrive\\Skole\\HVL\\6 Semester\\DAT154\\Assignment 4\\HotelFrontDeskApp\\FrontDesk\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Lotte\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -61,7 +62,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300-preview.22154.4\\RuntimeIdentifierGraph.json"
         }
       }
     }

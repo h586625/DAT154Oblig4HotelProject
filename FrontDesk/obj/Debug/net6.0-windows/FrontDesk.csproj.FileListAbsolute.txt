@@ -40,3 +40,24 @@ C:\Users\Lotte\Documents\GitHub\DAT154Oblig4HotelProject\FrontDesk\obj\Debug\net
 C:\Users\Lotte\Documents\GitHub\DAT154Oblig4HotelProject\FrontDesk\obj\Debug\net6.0-windows\FrontDesk.pdb
 C:\Users\Lotte\Documents\GitHub\DAT154Oblig4HotelProject\FrontDesk\obj\Debug\net6.0-windows\FrontDesk.genruntimeconfig.cache
 C:\Users\Lotte\Documents\GitHub\DAT154Oblig4HotelProject\FrontDesk\obj\Debug\net6.0-windows\ref\FrontDesk.dll
+C:\Users\Admin\OneDrive\Skole\HVL\6 Semester\DAT154\Assignment 4\HotelFrontDeskApp\FrontDesk\bin\Debug\net6.0-windows\FrontDesk.exe
+C:\Users\Admin\OneDrive\Skole\HVL\6 Semester\DAT154\Assignment 4\HotelFrontDeskApp\FrontDesk\bin\Debug\net6.0-windows\FrontDesk.deps.json
+C:\Users\Admin\OneDrive\Skole\HVL\6 Semester\DAT154\Assignment 4\HotelFrontDeskApp\FrontDesk\bin\Debug\net6.0-windows\FrontDesk.runtimeconfig.json
+C:\Users\Admin\OneDrive\Skole\HVL\6 Semester\DAT154\Assignment 4\HotelFrontDeskApp\FrontDesk\bin\Debug\net6.0-windows\FrontDesk.dll
+C:\Users\Admin\OneDrive\Skole\HVL\6 Semester\DAT154\Assignment 4\HotelFrontDeskApp\FrontDesk\bin\Debug\net6.0-windows\FrontDesk.pdb
+C:\Users\Admin\OneDrive\Skole\HVL\6 Semester\DAT154\Assignment 4\HotelFrontDeskApp\FrontDesk\obj\Debug\net6.0-windows\FrontDesk.csproj.AssemblyReference.cache
+C:\Users\Admin\OneDrive\Skole\HVL\6 Semester\DAT154\Assignment 4\HotelFrontDeskApp\FrontDesk\obj\Debug\net6.0-windows\MainWindow.g.cs
+C:\Users\Admin\OneDrive\Skole\HVL\6 Semester\DAT154\Assignment 4\HotelFrontDeskApp\FrontDesk\obj\Debug\net6.0-windows\App.g.cs
+C:\Users\Admin\OneDrive\Skole\HVL\6 Semester\DAT154\Assignment 4\HotelFrontDeskApp\FrontDesk\obj\Debug\net6.0-windows\FrontDesk_MarkupCompile.cache
+C:\Users\Admin\OneDrive\Skole\HVL\6 Semester\DAT154\Assignment 4\HotelFrontDeskApp\FrontDesk\obj\Debug\net6.0-windows\FrontDesk_MarkupCompile.lref
+C:\Users\Admin\OneDrive\Skole\HVL\6 Semester\DAT154\Assignment 4\HotelFrontDeskApp\FrontDesk\obj\Debug\net6.0-windows\MainWindow.baml
+C:\Users\Admin\OneDrive\Skole\HVL\6 Semester\DAT154\Assignment 4\HotelFrontDeskApp\FrontDesk\obj\Debug\net6.0-windows\FrontDesk.g.resources
+C:\Users\Admin\OneDrive\Skole\HVL\6 Semester\DAT154\Assignment 4\HotelFrontDeskApp\FrontDesk\obj\Debug\net6.0-windows\FrontDesk.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\OneDrive\Skole\HVL\6 Semester\DAT154\Assignment 4\HotelFrontDeskApp\FrontDesk\obj\Debug\net6.0-windows\FrontDesk.AssemblyInfoInputs.cache
+C:\Users\Admin\OneDrive\Skole\HVL\6 Semester\DAT154\Assignment 4\HotelFrontDeskApp\FrontDesk\obj\Debug\net6.0-windows\FrontDesk.AssemblyInfo.cs
+C:\Users\Admin\OneDrive\Skole\HVL\6 Semester\DAT154\Assignment 4\HotelFrontDeskApp\FrontDesk\obj\Debug\net6.0-windows\FrontDesk.csproj.CoreCompileInputs.cache
+C:\Users\Admin\OneDrive\Skole\HVL\6 Semester\DAT154\Assignment 4\HotelFrontDeskApp\FrontDesk\obj\Debug\net6.0-windows\FrontDesk.dll
+C:\Users\Admin\OneDrive\Skole\HVL\6 Semester\DAT154\Assignment 4\HotelFrontDeskApp\FrontDesk\obj\Debug\net6.0-windows\refint\FrontDesk.dll
+C:\Users\Admin\OneDrive\Skole\HVL\6 Semester\DAT154\Assignment 4\HotelFrontDeskApp\FrontDesk\obj\Debug\net6.0-windows\FrontDesk.pdb
+C:\Users\Admin\OneDrive\Skole\HVL\6 Semester\DAT154\Assignment 4\HotelFrontDeskApp\FrontDesk\obj\Debug\net6.0-windows\FrontDesk.genruntimeconfig.cache
+C:\Users\Admin\OneDrive\Skole\HVL\6 Semester\DAT154\Assignment 4\HotelFrontDeskApp\FrontDesk\obj\Debug\net6.0-windows\ref\FrontDesk.dll
