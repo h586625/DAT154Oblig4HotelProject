@@ -136,10 +136,4 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
-  <ItemGroup>
-    <ProjectReference Include="..\RoomServices\RoomServices.csproj">
-      <Project>{E4A9D095-527F-4EC1-A92D-EE851F9ECBAB}</Project>
-      <Name>RoomServices</Name>
-    </ProjectReference>
-  </ItemGroup>
 </Project>
