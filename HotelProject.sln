@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrontDesk", "FrontDesk\Fron
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerBooking", "CustomerBooking\CustomerBooking.csproj", "{AE084DA9-258C-425D-B339-51685C16B888}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomService", "RoomService\RoomService.csproj", "{3B348228-CAB7-4E7B-AE15-32472D2004EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,18 @@ Global
 		{AE084DA9-258C-425D-B339-51685C16B888}.Release|iPhone.Build.0 = Release|Any CPU
 		{AE084DA9-258C-425D-B339-51685C16B888}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{AE084DA9-258C-425D-B339-51685C16B888}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{3B348228-CAB7-4E7B-AE15-32472D2004EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B348228-CAB7-4E7B-AE15-32472D2004EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B348228-CAB7-4E7B-AE15-32472D2004EE}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{3B348228-CAB7-4E7B-AE15-32472D2004EE}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{3B348228-CAB7-4E7B-AE15-32472D2004EE}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{3B348228-CAB7-4E7B-AE15-32472D2004EE}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{3B348228-CAB7-4E7B-AE15-32472D2004EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B348228-CAB7-4E7B-AE15-32472D2004EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B348228-CAB7-4E7B-AE15-32472D2004EE}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{3B348228-CAB7-4E7B-AE15-32472D2004EE}.Release|iPhone.Build.0 = Release|Any CPU
+		{3B348228-CAB7-4E7B-AE15-32472D2004EE}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{3B348228-CAB7-4E7B-AE15-32472D2004EE}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
