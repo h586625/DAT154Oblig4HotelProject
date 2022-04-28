@@ -91,11 +91,5 @@
     <AndroidResource Include="Resources\drawable\icon_about.png" />
     <AndroidResource Include="Resources\drawable\icon_feed.png" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\RoomServices\RoomServices.csproj">
-      <Project>{E4A9D095-527F-4EC1-A92D-EE851F9ECBAB}</Project>
-      <Name>RoomServices</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
