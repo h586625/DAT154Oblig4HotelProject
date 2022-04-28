@@ -10,9 +10,9 @@ namespace Library.Models
         }
 
         [Key]
-        public int Usernr { get; set; }
-        public string? Email { get; set; }
-        public string? Password { get; set; }
+        public int Id { get; set; }
+        public string Email { get; set; } = null!;
+        public string Password { get; set; } = null!;
 
         public virtual ICollection<Reservation> Reservations { get; set; }
     }

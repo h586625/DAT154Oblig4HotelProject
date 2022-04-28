@@ -11,11 +11,11 @@ namespace Library.Models
 
         [Key]
         public int Roomnr { get; set; }
-        public int Numberofbeds { get; set; }
-        public int Roomsize { get; set; }
+        public int Beds { get; set; }
+        public int Size { get; set; }
         public int Price { get; set; }
         public bool Available { get; set; }
-        public bool Cleaned { get; set; }
+        public bool In_order { get; set; }
 
         public virtual ICollection<Reservation> Reservations { get; set; }
     }
