@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<Library.Data.HotelContext>();
+builder.Services.AddDbContext<Library.Data.dat154_2022_42Context>();
 
 // Add services to the container.
 builder.Services.AddRazorPages();

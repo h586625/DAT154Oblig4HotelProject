@@ -1,0 +1,58 @@
+﻿@page
+@model RoomService.Pages.Maintenance.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Todo</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Todo.Id" class="control-label"></label>
+                <input asp-for="Todo.Id" class="form-control" />
+                <span asp-validation-for="Todo.Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Todo.Roomid" class="control-label"></label>
+                <select asp-for="Todo.Roomid" class ="form-control" asp-items="ViewBag.Roomid"></select>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Todo.Cleaned" /> @Html.DisplayNameFor(model => model.Todo.Cleaned)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Todo.Maintained" /> @Html.DisplayNameFor(model => model.Todo.Maintained)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Todo.Serviced" /> @Html.DisplayNameFor(model => model.Todo.Serviced)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Todo.Notes" class="control-label"></label>
+                <input asp-for="Todo.Notes" class="form-control" />
+                <span asp-validation-for="Todo.Notes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

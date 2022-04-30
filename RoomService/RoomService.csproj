@@ -19,9 +19,4 @@
     <ProjectReference Include="..\Library\Library.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Pages\Cleaning\" />
-    <Folder Include="Pages\Service\" />
-  </ItemGroup>
-
 </Project>
