@@ -30,7 +30,7 @@ namespace FrontDesk
             InitializeComponent();
         }
 
-        private void UserSearch_Button(object sender, RoutedEventArgs e)
+        private void SearchForReservationByUser_Button(object sender, RoutedEventArgs e)
         {
             var studentName = ctx.Users.FirstOrDefault(u => u.Name.Equals(userNameText.Text));
             Trace.WriteLine(studentName);
@@ -51,7 +51,13 @@ namespace FrontDesk
             this.NavigationService.Navigate(reservationsPage);
         }
 
-        private void RoomInfo_Button(object sender, RoutedEventArgs e)
+        private void ShowRoomsButton_Click(object sender, RoutedEventArgs e)
+        {
+            RoomsPage roomsPage = new(ctx);
+            this.NavigationService.Navigate(roomsPage);
+        }
+
+        private void SearchForRoomByRoomNumber_Button(object sender, RoutedEventArgs e)
         {
             bool isRoom = int.TryParse(roomNumberText.Text, out int roomId);
             Room roomFound = ctx.Rooms.Find(roomId);

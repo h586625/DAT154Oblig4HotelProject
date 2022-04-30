@@ -5,26 +5,26 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:FrontDesk"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignWidth="1024" d:DesignHeight="768"
       Title="ReservationsPage">
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="600" />
+            <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
 
         <Label Grid.Column="0" Content="Hotel Scandic" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="auto" Width="auto" FontSize="24"/>
         <Label Grid.Column="0" Content="Reservations:" HorizontalAlignment="Left" Margin="19,62,0,0" VerticalAlignment="Top"/>
 
-        <ListView ItemsSource="{Binding}" Grid.Column="0" Name="ResList" HorizontalAlignment="Left" Height="376" Margin="115,64,0,0" VerticalAlignment="Top" Width="475">
+        <ListView ItemsSource="{Binding}" Grid.Column="0" Name="ResList" HorizontalAlignment="Left" Height="376" Margin="115,64,0,0" VerticalAlignment="Top" Width="auto">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="100" Header="Room" DisplayMemberBinding="{Binding Path=Roomnr}"></GridViewColumn>
-                    <GridViewColumn Width="100" Header="Name" DisplayMemberBinding="{Binding Path=User.Name}"></GridViewColumn>
-                    <GridViewColumn Width="100" Header="Email" DisplayMemberBinding="{Binding Path=User.Email}"></GridViewColumn>
-                    <GridViewColumn Width="100" Header="Date Start" DisplayMemberBinding="{Binding Path=DateStart}"></GridViewColumn>
-                    <GridViewColumn Width="100" Header="Date End" DisplayMemberBinding="{Binding Path=DateEnd}"></GridViewColumn>
+                    <GridViewColumn Width="80" Header="Room" DisplayMemberBinding="{Binding Path=Roomnr}"></GridViewColumn>
+                    <GridViewColumn Width="auto" Header="Name" DisplayMemberBinding="{Binding Path=User.Name}"></GridViewColumn>
+                    <GridViewColumn Width="auto" Header="Email" DisplayMemberBinding="{Binding Path=User.Email}"></GridViewColumn>
+                    <GridViewColumn Width="auto" Header="Date Start" DisplayMemberBinding="{Binding Path=DateStart}"></GridViewColumn>
+                    <GridViewColumn Width="auto" Header="Date End" DisplayMemberBinding="{Binding Path=DateEnd}"></GridViewColumn>
                     <GridViewColumn Width="80" Header="Checked In" DisplayMemberBinding="{Binding Path=CheckedIn}"></GridViewColumn>
                     <GridViewColumn Width="90" Header="Checked Out" DisplayMemberBinding="{Binding Path=CheckedOut}"></GridViewColumn>
                 </GridView>
@@ -59,7 +59,6 @@
 
                 <Button Name="ChangeRoomBtn" Content="Change Room" Click="ChangeRoom_Click" Visibility="Hidden"></Button>
                 <Button Name="DeleteResBtn" Content="Delete Reservation" Click="DelRes_Click"></Button>
-
             </StackPanel>
         </Grid>
     </Grid>
