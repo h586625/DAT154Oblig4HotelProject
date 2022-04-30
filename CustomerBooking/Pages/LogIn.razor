@@ -1,7 +1,47 @@
 ﻿@layout LogInLayout
+@inject NavigationManager NavigationManager
+
+
+<PageTitle>Login</PageTitle>
+
+<h3>Login</h3>
+
+<EditForm Models="User" OnValidSubmit="Login">
+    <DataAnnotationsValidator />
+    <div class="mb-3">
+        <label for="email">Email</label>
+        <InputText id="email" @bind-Value="user.Email" class="form-control" />
+        <ValidationMessage For="@(() => user.Email)" />
+    </div>
+    <div class="mb-3">
+        <label for="password">Password</label>
+        <InputText id="password" @bind-Value="user.Password" class="form-control" type="password" />
+        <ValidationMessage For="@(() => user.Password)" />
+    </div>
+    <div class="mb-3">
+        <label for="name">Name</label>
+        <InputText id="name" @bind-Value="user.Name" class="form-control" type="name" />
+        <ValidationMessage For="@(() => user.Name)" />
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+</EditForm>
+<div class="text-danger">
+    <span>@errorMessage</span>
+</div>
 
 @code {
+ 
+    private User user = new User();
 
+    private string errorMessage = string.Empty;
+
+    private string returnUrl = string.Empty;
+
+   
+
+    private async Task Login()
+    {
+       // await..
+    }
     
-
 }
