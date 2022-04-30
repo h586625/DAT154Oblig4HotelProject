@@ -39,6 +39,24 @@ namespace Library.Data
                     .ValueGeneratedNever()
                     .HasColumnName("id");
 
+                entity.Property(e => e.CheckedIn)
+                    .HasMaxLength(10)
+                    .HasColumnName("checked_in")
+                    .IsFixedLength();
+
+                entity.Property(e => e.CheckedOut)
+                    .HasMaxLength(10)
+                    .HasColumnName("checked_out")
+                    .IsFixedLength();
+
+                entity.Property(e => e.DateEnd)
+                    .HasColumnType("datetime")
+                    .HasColumnName("date_end");
+
+                entity.Property(e => e.DateStart)
+                    .HasColumnType("datetime")
+                    .HasColumnName("date_start");
+
                 entity.Property(e => e.Roomnr).HasColumnName("roomnr");
 
                 entity.Property(e => e.Userid).HasColumnName("userid");

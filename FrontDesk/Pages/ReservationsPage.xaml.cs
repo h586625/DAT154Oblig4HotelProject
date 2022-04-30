@@ -24,7 +24,7 @@ namespace FrontDesk
     /// </summary>
     public partial class ReservationsPage : Page
     {
-        private dat154_2022_42Context hcx;
+        private readonly dat154_2022_42Context hcx;
         private Reservation selectedRes;
         private Room selectedAvbRoom;
         private string username;
