@@ -1,23 +1,17 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Library.Models
 {
     public partial class Todo
     {
-        public Todo()
-        {
-            Rooms = new HashSet<Room>();
-        }
-
-        [Key]
         public int Id { get; set; }
+        public int? Roomid { get; set; }
         public bool Cleaned { get; set; }
-
         public bool Maintained { get; set; }
         public bool Serviced { get; set; }
+        public string? Notes { get; set; }
 
-        public string Notes { get; set; } = null!;
-
-        public virtual ICollection<Room> Rooms { get; set; }
+        public virtual Room? Room { get; set; }
     }
 }

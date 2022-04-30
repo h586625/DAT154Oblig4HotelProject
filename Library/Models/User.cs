@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Library.Models
 {
@@ -9,10 +10,10 @@ namespace Library.Models
             Reservations = new HashSet<Reservation>();
         }
 
-        [Key]
         public int Id { get; set; }
         public string Email { get; set; } = null!;
         public string Password { get; set; } = null!;
+        public string Name { get; set; } = null!;
 
         public virtual ICollection<Reservation> Reservations { get; set; }
     }

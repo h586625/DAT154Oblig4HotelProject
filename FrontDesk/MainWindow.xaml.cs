@@ -21,24 +21,11 @@ namespace FrontDesk
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : NavigationWindow
     {
-        private readonly HotelContext ctx = new();
-        readonly DbSet<User> users;
-
         public MainWindow()
         {
             InitializeComponent();
-
-            users = ctx.Set<User>();
-            users.Load();
-
-            Refresh();
-        }
-
-        private void Refresh()
-        {
-            CustomerList.DataContext = users.Local.ToList();
         }
     }
 }
