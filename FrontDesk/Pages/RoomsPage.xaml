@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignWidth="1024" d:DesignHeight="760"
       Title="RoomsPage">
-
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />
@@ -17,7 +17,14 @@
         <Label Grid.Column="0" Content="Hotel Scandic" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="auto" Width="auto" FontSize="24"/>
         <Label Grid.Column="0" Content="Rooms:" HorizontalAlignment="Left" Margin="19,62,0,0" VerticalAlignment="Top"/>
 
-        <ListView ItemsSource="{Binding}" Grid.Column="0" Name="RoomsList" HorizontalAlignment="Left" Height="376" Margin="115,64,0,0" VerticalAlignment="Top" Width="auto">
+        <ListView ItemsSource="{Binding}"
+                  Grid.Column="0"
+                  Name="RoomsList"
+                  HorizontalAlignment="Left"
+                  Height="376"
+                  Margin="115,64,0,0"
+                  VerticalAlignment="Top"
+                  Width="auto">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="80" Header="Roomnr" DisplayMemberBinding="{Binding Path=Roomnr}"></GridViewColumn>
@@ -27,7 +34,14 @@
                     <GridViewColumn Width="100" Header="Available" DisplayMemberBinding="{Binding Path=Available}"></GridViewColumn>
                     <GridViewColumn Width="80" Header="In order" DisplayMemberBinding="{Binding Path=InOrder}"></GridViewColumn>
                 </GridView>
+
             </ListView.View>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <EventSetter Event="MouseDoubleClick" Handler="ListViewItem_MouseDoubleClick" />
+                </Style>
+            </ListView.ItemContainerStyle>
         </ListView>
     </Grid>
+    
 </Page>

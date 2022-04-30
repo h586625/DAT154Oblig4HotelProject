@@ -35,5 +35,14 @@ namespace FrontDesk
 
             RoomsList.DataContext = rooms.Local.ToObservableCollection();
         }
+        private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            // Gjettet meg også frem til store deler av denne. Gjetting nr 3 i prosjektet som funker?
+            var room = (sender as ListViewItem).DataContext as Library.Models.Room;
+            if (room != null)
+            {
+                this.NavigationService.Navigate(new RoomPage(hcx, room));
+            }
+        }
     }
 }
