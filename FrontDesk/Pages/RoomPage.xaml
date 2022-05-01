@@ -38,14 +38,14 @@
         <TextBlock Grid.Column="1" Grid.Row="2"  Text="Add task"/>
         
         <!--Form start-->
-        <CheckBox Grid.Column="3" Grid.Row="2" x:Name="AddCleaned">Cleaned</CheckBox>
-        <CheckBox Grid.Column="4" Grid.Row="2" x:Name="AddMaintained">Maintained</CheckBox>
-        <CheckBox Grid.Column="5" Grid.Row="2" x:Name="AddServiced">Serviced</CheckBox>
+        <CheckBox Grid.Column="3" Grid.Row="2" Name="AddCleaning">Cleaning</CheckBox>
+        <CheckBox Grid.Column="4" Grid.Row="2" Name="AddMaintenance">Maintenance</CheckBox>
+        <CheckBox Grid.Column="5" Grid.Row="2" Name="AddService">Service</CheckBox>
         
         <TextBlock Grid.Column="6" Grid.Row="1"  Text="Notes: "/>
-        <TextBox Grid.Column="6" Grid.Row="2" x:Name="AddNotes"/>
+        <TextBox Grid.Column="6" Grid.Row="2" Name="AddNotes"/>
 
-        <Button Grid.Column="2" Grid.Row="2" x:Name="Submit" Content="Submit" Click="Submit_Click" />
+        <Button Grid.Column="2" Grid.Row="2" Name="Submit" Content="Submit" Click="Submit_Click" />
         <!--Form end-->
         
         <Label Name="TTNS" Content="No task type selected" Grid.Row="1" Grid.Column="5" Visibility="Hidden" Grid.ColumnSpan="2" />
