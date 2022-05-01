@@ -35,19 +35,11 @@ namespace Library.Data
         {
             modelBuilder.Entity<Reservation>(entity =>
             {
-                entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("id");
+                entity.Property(e => e.Id).HasColumnName("id");
 
-                entity.Property(e => e.CheckedIn)
-                    .HasMaxLength(10)
-                    .HasColumnName("checked_in")
-                    .IsFixedLength();
+                entity.Property(e => e.CheckedIn).HasColumnName("checked_in");
 
-                entity.Property(e => e.CheckedOut)
-                    .HasMaxLength(10)
-                    .HasColumnName("checked_out")
-                    .IsFixedLength();
+                entity.Property(e => e.CheckedOut).HasColumnName("checked_out");
 
                 entity.Property(e => e.DateEnd)
                     .HasColumnType("datetime")
@@ -64,12 +56,12 @@ namespace Library.Data
                 entity.HasOne(d => d.RoomnrNavigation)
                     .WithMany(p => p.Reservations)
                     .HasForeignKey(d => d.Roomnr)
-                    .HasConstraintName("FK__Reservati__roomn__46E78A0C");
+                    .HasConstraintName("FK__Reservati__roomn__5070F446");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Reservations)
                     .HasForeignKey(d => d.Userid)
-                    .HasConstraintName("FK__Reservati__useri__47DBAE45");
+                    .HasConstraintName("FK__Reservati__useri__5535A963");
             });
 
             modelBuilder.Entity<Room>(entity =>
@@ -94,9 +86,7 @@ namespace Library.Data
 
             modelBuilder.Entity<Todo>(entity =>
             {
-                entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("id");
+                entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.Cleaned).HasColumnName("cleaned");
 
@@ -113,17 +103,15 @@ namespace Library.Data
                 entity.HasOne(d => d.Room)
                     .WithMany(p => p.Todos)
                     .HasForeignKey(d => d.Roomid)
-                    .HasConstraintName("FK__Todos__roomid__4D94879B");
+                    .HasConstraintName("FK__Todos__roomid__5812160E");
             });
 
             modelBuilder.Entity<User>(entity =>
             {
-                entity.HasIndex(e => e.Email, "UQ__User__AB6E616435E7106A")
+                entity.HasIndex(e => e.Email, "UQ__tmp_ms_x__AB6E61640D04B4EC")
                     .IsUnique();
 
-                entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("id");
+                entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.Email)
                     .HasMaxLength(128)
