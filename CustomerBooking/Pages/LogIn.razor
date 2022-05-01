@@ -1,6 +1,14 @@
 ﻿@page "/login"
+
+
+
+@inject HttpClient Http
+
 @using Library.Models
+
 @inject NavigationManager NavigationManager
+@inject IDbContextFactory<Library.Data.dat154_2022_42Context> DbFactory
+@inject IServiceScopeFactory serviceScopeFactory
 
 
 <PageTitle>Login</PageTitle>
