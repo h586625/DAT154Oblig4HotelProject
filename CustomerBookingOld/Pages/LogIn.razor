@@ -1,13 +1,25 @@
 ﻿@page "/login"
+
+@using Library.Data
 @using Library.Models
+@using Microsoft.EntityFrameworkCore
 @inject NavigationManager NavigationManager
+@inject dat154_2022_42Context Ctx
 
 
 <PageTitle>Login</PageTitle>
 
 <h3>Login</h3>
 
-<EditForm Models="User" OnValidSubmit="Login">
+@foreach (var user in users)
+{
+    <tr>
+        <td>@user.Email</td>
+        <td>@user.Password</td>
+    </tr>
+}
+
+@*<EditForm Models="User" OnValidSubmit="Login">
     <DataAnnotationsValidator />
     <div class="mb-3">
         <label for="email">Email</label>
@@ -28,7 +40,7 @@
 </EditForm>
 <div class="text-danger">
     <span>@errorMessage</span>
-</div>
+</div>*@
 
 @code {
 
@@ -38,7 +50,14 @@
 
     private string returnUrl = string.Empty;
 
-   
+    //private IList<User> users;
+    public List<User> users { get; set; } = new List<User>();
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        this.users = await Ctx.Users.ToListAsync();
+    }
 
     private async Task Login()
     {
