@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:FrontDesk"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignWidth="1024" d:DesignHeight="768"
       Title="Room">
 
     <Grid>
@@ -27,19 +27,28 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Column="1" Grid.Row="1"  Text="Hotel name here"
+        <TextBlock Grid.Column="1" Grid.Row="1"  Text="Scandic Hotel"
                    FontSize="20" Margin="0,0,10,40"/>
-        <TextBlock Grid.Column="1" Grid.Row="3"  Text="Room Information"
+        <TextBlock Grid.Column="1" Grid.Row="3"  Text="Room Information" FontWeight="Bold"
                    Grid.ColumnSpan="2"/>
-        <TextBlock Name ="RoomNumber"  Grid.Column="1" Grid.Row="4"  Text="Room number: "
+        <TextBlock Name ="Roomnr"  Grid.Column="1" Grid.Row="4"  Text="Roomnr: "
                    Grid.ColumnSpan="2"/>
         <TextBlock Name="Beds" Grid.Column="1" Grid.Row="5"  Text="Beds: "
                    Grid.ColumnSpan="2"/>
         <TextBlock Name="Size" Grid.Column="1" Grid.Row="6"  Text="Size: "
+                   Grid.ColumnSpan="2"/>
+        <TextBlock Name="Price" Grid.Column="1" Grid.Row="7"  Text="Price: "
+                   Grid.ColumnSpan="2"/>
+        <TextBlock Name="Available" Grid.Column="1" Grid.Row="8"  Text="Available: "
+                   Grid.ColumnSpan="2"/>
+        <TextBlock Name="InOrder" Grid.Column="1" Grid.Row="9"  Text="In order: "
                    Grid.ColumnSpan="2"/>
 
         <TextBlock Grid.Column="2" Grid.Row="2"  Text="Add task"/>
@@ -65,16 +74,14 @@
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
-                        <GridViewColumn Width="100" Header="Task type" DisplayMemberBinding="{Binding Path= Type}"></GridViewColumn>
-                        <GridViewColumn Width="100" Header="Notes" DisplayMemberBinding="{Binding Path=Note}"></GridViewColumn>
-                        <GridViewColumn Width="100" Header="Info" DisplayMemberBinding="{Binding Path=Info}"></GridViewColumn>
-                        <GridViewColumn Width="100" Header="State" DisplayMemberBinding="{Binding Path=State}"></GridViewColumn>
+                        <GridViewColumn Width="100" Header="Cleaned" DisplayMemberBinding="{Binding Path=Cleaned}"></GridViewColumn>
+                        <GridViewColumn Width="100" Header="Serviced" DisplayMemberBinding="{Binding Path=Serviced}"></GridViewColumn>
+                        <GridViewColumn Width="100" Header="Maintained" DisplayMemberBinding="{Binding Path=Maintained}"></GridViewColumn>
+                        <GridViewColumn Width="100" Header="Notes" DisplayMemberBinding="{Binding Path=Notes}"></GridViewColumn>
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
         </ListView>
         <Button x:Name="Submit" Content="Submit" Click="Submit_Click" Grid.Column="7" Grid.Row="3"/>
-        <Button x:Name="Cancel" Content="Cancel" Click="Cancel_Click" Grid.Column="7" Grid.Row="2"/>
-
     </Grid>
 </Page>

@@ -10,8 +10,8 @@ namespace Library.Models
         public int? Userid { get; set; }
         public DateTime DateStart { get; set; }
         public DateTime DateEnd { get; set; }
-        public string? CheckedIn { get; set; }
-        public string? CheckedOut { get; set; }
+        public bool? CheckedIn { get; set; }
+        public bool? CheckedOut { get; set; }
 
         public virtual Room? RoomnrNavigation { get; set; }
         public virtual User? User { get; set; }

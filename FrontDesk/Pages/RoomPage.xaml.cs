@@ -32,14 +32,18 @@ namespace FrontDesk
         {
             InitializeComponent();
             this.hcx = hcx;
+
             this.r = r;
             todos = hcx.Todos;
-            //todos.Load();
+            todos.Load();
 
-            RoomNumber.Text += r.Roomnr;
+            Roomnr.Text += r.Roomnr;
             Beds.Text += r.Beds;
             Size.Text += r.Size;
-            //tasksList.DataContext = r.Todos;
+            Price.Text += r.Price;
+            Available.Text += r.Available;
+            InOrder.Text += r.InOrder;
+            tasksList.DataContext = r.Todos;
         }
 
         private void Submit_Click(object sender, RoutedEventArgs e)

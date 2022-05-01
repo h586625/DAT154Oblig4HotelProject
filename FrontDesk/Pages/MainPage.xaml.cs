@@ -1,20 +1,11 @@
-﻿using Library.Data;
+﻿using FrontDesk.Dialogs;
+using Library.Data;
 using Library.Models;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace FrontDesk
 {
@@ -30,34 +21,7 @@ namespace FrontDesk
             InitializeComponent();
         }
 
-        private void SearchForReservationByUser_Button(object sender, RoutedEventArgs e)
-        {
-            var studentName = ctx.Users.FirstOrDefault(u => u.Name.Equals(userNameText.Text));
-            Trace.WriteLine(studentName);
-            if (studentName != null)
-            {
-                ReservationsPage reservationsPage = new(ctx, userNameText.Text);
-                this.NavigationService.Navigate(reservationsPage);
-            }
-            else
-            {
-                userNameText.Text = "Please enter a valid user.";
-            }
-        }
-
-        private void ShowReservations_Button(object sender, RoutedEventArgs e)
-        {
-            ReservationsPage reservationsPage = new(ctx);
-            this.NavigationService.Navigate(reservationsPage);
-        }
-
-        private void ShowRoomsButton_Click(object sender, RoutedEventArgs e)
-        {
-            RoomsPage roomsPage = new(ctx);
-            this.NavigationService.Navigate(roomsPage);
-        }
-
-        private void SearchForRoomByRoomNumber_Button(object sender, RoutedEventArgs e)
+        private void SearchForRoomByRoomNumber_Click(object sender, RoutedEventArgs e)
         {
             bool isRoom = int.TryParse(roomNumberText.Text, out int roomId);
             Room roomFound = ctx.Rooms.Find(roomId);
@@ -72,19 +36,86 @@ namespace FrontDesk
             }
         }
 
-        private void AllRoms_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void SearchForReservationByUser_Click(object sender, RoutedEventArgs e)
         {
-
+            var studentName = ctx.Users.FirstOrDefault(u => u.Name.Equals(userNameText.Text));
+            Trace.WriteLine(studentName);
+            if (studentName != null)
+            {
+                ReservationsPage reservationsPage = new(ctx, userNameText.Text);
+                this.NavigationService.Navigate(reservationsPage);
+            }
+            else
+            {
+                userNameText.Text = "Please enter a valid user.";
+            }
+        }
+        private void ShowRooms_Click(object sender, RoutedEventArgs e)
+        {
+            RoomsPage roomsPage = new(ctx);
+            this.NavigationService.Navigate(roomsPage);
         }
 
-        private void NewReservation_Button(object sender, RoutedEventArgs e)
+        private void ShowReservations_Click(object sender, RoutedEventArgs e)
         {
-           
+            ReservationsPage reservationsPage = new(ctx);
+            this.NavigationService.Navigate(reservationsPage);
+        }
+        private void CreateNewRoom_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new NewRoomDialog();
+            dialog.Show();
+            dialog.Owner = Window.GetWindow(this);
+            dialog.Closing += (sender, e) =>
+            {
+                var d = sender as NewRoomDialog;
+                if (!d.Canceled)
+                {
+                    int roomnr = int.Parse(d.RoomnrTextBox.Text);
+                    int beds = int.Parse(d.BedsTextBox.Text);
+                    int size = int.Parse(d.SizeTextBox.Text);
+                    int price = int.Parse(d.PriceTextBox.Text);
+
+                    Room room = new() { 
+                        Roomnr = roomnr, 
+                        Beds = beds, 
+                        Size = size, 
+                        Price = price,
+                        Available = true,
+                        InOrder = true
+                    };
+                    ctx.Rooms.Add(room);
+                    ctx.SaveChanges();
+                }
+            };
         }
 
-        private void CreateNewRoomButton_Click(object sender, RoutedEventArgs e)
+        private void CreateNewReservation_Click(object sender, RoutedEventArgs e)
         {
-            
+            var dialog = new NewReservationDialog();
+            dialog.Show();
+            dialog.Owner = Window.GetWindow(this);
+            dialog.Closing += (sender, e) =>
+            {
+                var d = sender as NewReservationDialog;
+                if (!d.Canceled)
+                {
+                    int roomnr = int.Parse(d.RoomnrTextBox.Text);
+                    int userid = int.Parse(d.UseridTextBox.Text);
+                    var dateStart = DateTime.Parse(d.DateStart.Text);
+                    var dateEnd = DateTime.Parse(d.DateEnd.Text);
+
+                    Reservation reservation = new()
+                    {
+                        Roomnr = roomnr,
+                        Userid = userid,
+                        DateStart = dateStart,
+                        DateEnd = dateEnd,
+                    };
+                    ctx.Reservations.Add(reservation);
+                    ctx.SaveChanges();
+                }
+            };
         }
     }
 }
