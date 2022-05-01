@@ -9,6 +9,7 @@ builder.Services.AddDbContext<Library.Data.dat154_2022_42Context>();
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
+builder.Services.AddSingleton<BookingService>();
 
 var app = builder.Build();
 
