@@ -25,72 +25,27 @@ namespace FrontDesk
     public partial class RoomPage : Page
     {
         private Room r;
-        DbSet<Todo> todos;
-        Todo t;
+        //DbSet<Todo> todos;
+        //Todo t;
         dat154_2022_42Context hcx;
         public RoomPage(dat154_2022_42Context hcx, Room r)
         {
             InitializeComponent();
             this.hcx = hcx;
             this.r = r;
-            todos = hcx.Todos;
-            //todos.Load();
+            hcx.Rooms.Load();
+            var todos = hcx.Todos;
 
             RoomNumber.Text += r.Roomnr;
             Beds.Text += r.Beds;
             Size.Text += r.Size;
-            //tasksList.DataContext = r.Todos;
+            tasksList.DataContext = todos.Local.ToObservableCollection().Where(t => t.Roomid == r.Roomnr);
         }
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-            //String n = AddNotes.Text;
-            //String i = AddInfo.Text;
-            //int taskType = TaskType.SelectedIndex + 1;
-            //int taskState = TaskState.SelectedIndex;
-            //if (taskState == -1)
-            //{
-            //    taskState = 0;
-            //}
-
-            //if (taskType != 1 && taskType != 2)
-            //{
-            //    TTNS.Visibility = Visibility.Visible;
-            //}
-            //else
-            //{
-            //    if (t == null)
-            //    {
-            //        t = new ClassLibraryHotel.Task();
-            //        t.Note = n;
-            //        t.Info = i;
-            //        t.Type = taskType;
-            //        t.State = taskState;
-            //        t.Room = r;
-            //        t.RoomRoomId = r.RoomId;
-
-            //        tasks.Add(t);
-            //        hcx.SaveChanges();
-            //        tasksList.DataContext = null;
-            //        tasksList.DataContext = r.Tasks;
-            //    }
-            //    else
-            //    {
-            //        t.Note = n;
-            //        t.Info = i;
-            //        t.Type = taskType;
-            //        t.State = taskState;
-            //        hcx.SaveChanges();
-            //        tasksList.DataContext = null;
-            //        tasksList.DataContext = r.Tasks;
-            //    }
-
-            //    Reset();
-
-                //Må oppdatere viduet slik at nye tasks vises.
-            //}
+            Todo roo = new Todo();
         }
-
 
         private void TaskList_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {

@@ -11,70 +11,62 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="120"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="90"/>
-            <ColumnDefinition Width="90"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="300"/>
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="20"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Column="1" Grid.Row="1"  Text="Hotel name here"
-                   FontSize="20" Margin="0,0,10,40"/>
-        <TextBlock Grid.Column="1" Grid.Row="3"  Text="Room Information"
-                   Grid.ColumnSpan="2"/>
-        <TextBlock Name ="RoomNumber"  Grid.Column="1" Grid.Row="4"  Text="Room number: "
-                   Grid.ColumnSpan="2"/>
-        <TextBlock Name="Beds" Grid.Column="1" Grid.Row="5"  Text="Beds: "
-                   Grid.ColumnSpan="2"/>
-        <TextBlock Name="Size" Grid.Column="1" Grid.Row="6"  Text="Size: "
-                   Grid.ColumnSpan="2"/>
+        <TextBlock Name ="RoomNumber" Grid.Column="1" Grid.Row="0"  Text="Room Number " FontSize="20"/>
+        
+        <TextBlock Name="Beds" Grid.Column="1" Grid.Row="5"  Text="Beds: " Grid.ColumnSpan="2"/>
+        <TextBlock Name="Size" Grid.Column="1" Grid.Row="6"  Text="Size: " Grid.ColumnSpan="2"/>
 
-        <TextBlock Grid.Column="2" Grid.Row="2"  Text="Add task"/>
-        <TextBlock Grid.Column="3" Grid.Row="2"  Text="Notes: "/>
-        <TextBox x:Name="AddNotes" Grid.Column="3" Grid.Row="3" Width="120"/>
-        <TextBlock Grid.Column="4" Grid.Row="2"  Text="Info: "/>
-        <TextBox x:Name="AddInfo" Grid.Column="4" Grid.Row="3" Width="120"/>
-        <TextBlock Text="Task type" Grid.Column="5" Grid.Row="2"/>
-        <ComboBox Text="Task type" Name="TaskType" Grid.Column="5" Grid.Row="3">
-            <ComboBoxItem Content="Service"/>
-            <ComboBoxItem Content="Maintenance"/>
-        </ComboBox>
-        <TextBlock Text="State" Grid.Column="6" Grid.Row="2"/>
-        <ComboBox Text="State" Name="TaskState" Grid.Column="6" Grid.Row="3">
-            <ComboBoxItem Content="Not Started"/>
-            <ComboBoxItem Content="Finished"/>
-        </ComboBox>
+        <TextBlock Grid.Column="1" Grid.Row="2"  Text="Add task"/>
+        
+        <!--Form start-->
+        <CheckBox Grid.Column="3" Grid.Row="2" x:Name="AddCleaned">Cleaned</CheckBox>
+        <CheckBox Grid.Column="4" Grid.Row="2" x:Name="AddMaintained">Maintained</CheckBox>
+        <CheckBox Grid.Column="5" Grid.Row="2" x:Name="AddServiced">Serviced</CheckBox>
+        
+        <TextBlock Grid.Column="6" Grid.Row="1"  Text="Notes: "/>
+        <TextBox Grid.Column="6" Grid.Row="2" x:Name="AddNotes"/>
 
+        <Button Grid.Column="2" Grid.Row="2" x:Name="Submit" Content="Submit" Click="Submit_Click" />
+        <!--Form end-->
+        
         <Label Name="TTNS" Content="No task type selected" Grid.Row="1" Grid.Column="5" Visibility="Hidden" Grid.ColumnSpan="2" />
 
 
-        <ListView Name="tasksList" ItemsSource="{Binding}" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3" Grid.RowSpan="10" MouseDoubleClick="TaskList_OnMouseDoubleClick">
+        <ListView ItemsSource="{Binding}"
+                  Name="tasksList"
+                  Grid.Column="2"
+                  Grid.Row="4"
+                  Grid.ColumnSpan="5"
+                  Grid.RowSpan="10"
+                  MouseDoubleClick="TaskList_OnMouseDoubleClick">
             <ListView.View>
                 <GridView>
-                    <GridView.Columns>
-                        <GridViewColumn Width="100" Header="Task type" DisplayMemberBinding="{Binding Path= Type}"></GridViewColumn>
-                        <GridViewColumn Width="100" Header="Notes" DisplayMemberBinding="{Binding Path=Note}"></GridViewColumn>
-                        <GridViewColumn Width="100" Header="Info" DisplayMemberBinding="{Binding Path=Info}"></GridViewColumn>
-                        <GridViewColumn Width="100" Header="State" DisplayMemberBinding="{Binding Path=State}"></GridViewColumn>
-                    </GridView.Columns>
+                    <GridViewColumn Width="100" Header="ToDo ID" DisplayMemberBinding="{Binding Path= Id}"></GridViewColumn>
+                    <GridViewColumn Width="100" Header="Cleaned" DisplayMemberBinding="{Binding Path=Cleaned}"></GridViewColumn>
+                    <GridViewColumn Width="100" Header="Maintained" DisplayMemberBinding="{Binding Path=Maintained}"></GridViewColumn>
+                    <GridViewColumn Width="100" Header="Serviced" DisplayMemberBinding="{Binding Path=Serviced}"></GridViewColumn>
+                    <GridViewColumn Width="100" Header="Notes" DisplayMemberBinding="{Binding Path=Notes}"></GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="Submit" Content="Submit" Click="Submit_Click" Grid.Column="7" Grid.Row="3"/>
-        <Button x:Name="Cancel" Content="Cancel" Click="Cancel_Click" Grid.Column="7" Grid.Row="2"/>
-
     </Grid>
 </Page>
