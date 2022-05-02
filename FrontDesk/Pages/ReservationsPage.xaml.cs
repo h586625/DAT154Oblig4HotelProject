@@ -1,4 +1,6 @@
-﻿using Library.Data;
+﻿using FrontDesk.Pages;
+using Library;
+using Library.Data;
 using Library.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -33,6 +35,7 @@ namespace FrontDesk
             InitializeComponent();
 
             hcx.Reservations.Load();
+            hcx.Rooms.Load();
             hcx.Users.Load();
 
             this.hcx = hcx;
@@ -51,6 +54,7 @@ namespace FrontDesk
             InitializeComponent();
             
             hcx.Reservations.Load();
+            hcx.Rooms.Load();
             hcx.Users.Load();
 
             this.hcx = hcx;
@@ -66,172 +70,136 @@ namespace FrontDesk
 
         private void ResList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //throw new NotImplementedException();
+            if ((sender as ListView).SelectedIndex != -1)
+            {
+                if (ContentGrid.Visibility is Visibility.Hidden) ContentGrid.Visibility = Visibility.Visible;
+                selectedRes = (sender as ListView).SelectedItem as Reservation;
+                ResId.Text = ((sender as ListView).SelectedItem as Reservation).Id.ToString();
+                Roomnr.Text = ((sender as ListView).SelectedItem as Reservation).RoomnrNavigation.Roomnr.ToString();
 
-            //if ((sender as ListView).SelectedIndex != -1)
-            //{
-            //    if (ContentGrid.Visibility is Visibility.Hidden) ContentGrid.Visibility = Visibility.Visible;
-            //    selectedRes = (sender as ListView).SelectedItem as Reservation;
-            //    ResId.Text = ((sender as ListView).SelectedItem as Reservation).Id.ToString();
-            //    RoomId.Text = ((sender as ListView).SelectedItem as Reservation).RoomnrNavigation.Roomnr.ToString();
+                if (selectedRes.CheckedIn == true)
+                {
+                    CheckIn.Content = "Check out";
+                }
+                else
+                {
+                    CheckIn.Content = "Check in";
+                }
 
-            //    if (selectedRes.CheckedIn == true)
-            //    {
-            //        CheckIn.Content = "Check out";
-            //    }
-            //    else
-            //    {
-            //        CheckIn.Content = "Check In";
-            //    }
+                if (selectedRes.CheckedOut == true)
+                {
+                    CheckIn.Visibility = Visibility.Hidden;
+                    othrAvbRooms.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    CheckIn.Visibility = Visibility.Visible;
+                    othrAvbRooms.Visibility = Visibility.Visible;
+                }
 
-            //    if (selectedRes.CheckedOut == true)
-            //    {
-            //        CheckIn.Visibility = Visibility.Hidden;
-            //        othrAvbRooms.Visibility = Visibility.Hidden;
-            //    }
-            //    else
-            //    {
-            //        CheckIn.Visibility = Visibility.Visible;
-            //        othrAvbRooms.Visibility = Visibility.Visible;
-            //    }
-
-            //    //knappen for å slette reservasjonene
-            //    if (selectedRes.CheckedIn && selectedRes.CheckedOut)
-            //    {
-            //        DeleteResBtn.Visibility = Visibility.Visible;
-            //    }
-            //    else if (!selectedRes.CheckedIn && !selectedRes.CheckedOut)
-            //    {
-            //        DeleteResBtn.Visibility = Visibility.Visible;
-            //    }
-            //    else
-            //    {
-            //        DeleteResBtn.Visibility = Visibility.Hidden;
-            //    }
-
-            //    AvbRoomsTxt.Visibility = Visibility.Hidden;
-            //    AvailableRooms.Visibility = Visibility.Hidden;
-            //}
+                AvbRoomsTxt.Visibility = Visibility.Hidden;
+                AvailableRooms.Visibility = Visibility.Hidden;
+            }
 
         }
 
         private void AvailableRooms_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //throw new NotImplementedException();
+            if ((sender as ListView).SelectedIndex != -1)
+            {
+                selectedAvbRoom = (sender as ListView).SelectedItem as Room;
+                ChangeRoomBtn.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                ChangeRoomBtn.Visibility = Visibility.Hidden;
+            }
 
-            //if ((sender as ListView).SelectedIndex != -1)
-            //{
-            //    selectedAvbRoom = (sender as ListView).SelectedItem as Room;
-            //    ChangeRoomBtn.Visibility = Visibility.Visible;
-            //}
-            //else
-            //{
-            //    ChangeRoomBtn.Visibility = Visibility.Hidden;
-            //}
+        }
+        private void AvbRooms_Click(object sender, RoutedEventArgs e)
+        {
+            List<Room> availableRooms = Controller.GetAvailableRooms(hcx, 0, 0, selectedRes.DateStart, selectedRes.DateEnd);
 
+            AvailableRooms.DataContext = availableRooms;
+
+            AvbRoomsTxt.Visibility = Visibility.Visible;
+            AvailableRooms.Visibility = Visibility.Visible;
         }
 
         private void ChangeRoom_Click(object sender, RoutedEventArgs e)
         {
-            //selectedRes.RoomRoomId = selectedAvbRoom.RoomId;
-            //hcx.SaveChanges();
+            selectedRes.Roomnr = selectedAvbRoom.Roomnr;
+            hcx.SaveChanges();
 
-            //AvailableRooms.DataContext = null;
+            AvailableRooms.DataContext = null;
 
-            //RoomId.Text = selectedRes.RoomRoomId.ToString();
+            Roomnr.Text = selectedRes.Roomnr.ToString();
 
-            //AvailableRooms.Visibility = Visibility.Hidden;
-            //ChangeRoomBtn.Visibility = Visibility.Hidden;
-            //AvbRoomsTxt.Visibility = Visibility.Hidden;
-        }
+            AvailableRooms.Visibility = Visibility.Hidden;
+            ChangeRoomBtn.Visibility = Visibility.Hidden;
+            AvbRoomsTxt.Visibility = Visibility.Hidden;
 
-        private void AvbRooms_Click(object sender, RoutedEventArgs e)
-        {
-            //søk på ledige rom og så bytt til valgt rom
-            //List<Room> availableRooms = HotelController.RetrieveAvaliableRooms(hcx, selectedRes.DateStart, selectedRes.DateEnd);
-
-            //AvailableRooms.DataContext = availableRooms;
-
-            //AvbRoomsTxt.Visibility = Visibility.Visible;
-            //AvailableRooms.Visibility = Visibility.Visible;
+            ResList.DataContext = null;
+            var updatedRes = hcx.Reservations;
+            ResList.DataContext = updatedRes.Local.ToObservableCollection();
         }
 
         private void CheckIn_Click(object sender, RoutedEventArgs e)
         {
-            //if (selectedRes.CheckedIn == false)
-            //{
-            //    selectedRes.CheckedIn = true;
-            //    hcx.SaveChanges();
+            if (selectedRes.CheckedIn == false)
+            {
+                selectedRes.CheckedIn = true;
+                hcx.SaveChanges();
 
-            //    //skjul høyresiden etterpå
-            //    ContentGrid.Visibility = Visibility.Hidden;
+                ContentGrid.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                selectedRes.CheckedOut = true;
 
-            //}
-            //else
-            //{
-            //    selectedRes.CheckedOut = true;
+                hcx.SaveChanges();
 
-            //    //ny cleaning task
-            //    selectedRes.Room.Tasks.Add(new ClassLibraryHotel.Task
-            //    {
-            //        Note = "",
-            //        Info = "Cleaning",
-            //        State = 0,
-            //        Type = 0,
-            //        RoomRoomId = selectedRes.Room.RoomId
-            //    }
-            //    );
+                CheckIn.Visibility = Visibility.Hidden;
+                othrAvbRooms.Visibility = Visibility.Hidden;
+            }
 
-            //    hcx.SaveChanges();
+            ResList.DataContext = null;
 
-            //    CheckIn.Visibility = Visibility.Hidden;
-            //    othrAvbRooms.Visibility = Visibility.Hidden;
-
-            //    //skriv at en er blitt sjekket ut oppdater listen 
-            //}
-
-            //ResList.DataContext = null;
-
-            //if (username == null)
-            //{
-            //    hcx.Reservations.Load();
-            //    var oppdatertRes = hcx.Reservations;
-            //    ResList.DataContext = oppdatertRes.Local;
-            //}
-            //else
-            //{
-            //    hcx.Users.Load();
-            //    var user = hcx.Users.Local.FirstOrDefault(u => u.Username.Equals(username));
-            //    ResList.DataContext = user.Reservations;
-            //}
+            if (username == null)
+            {
+                hcx.Reservations.Load();
+                var updatedRes = hcx.Reservations;
+                ResList.DataContext = updatedRes.Local.ToObservableCollection();
+            }
+            else
+            {
+                hcx.Users.Load();
+                var user = hcx.Users.Local.FirstOrDefault(u => u.Name.Equals(username));
+                ResList.DataContext = user.Reservations;
+            }
         }
 
         private void DelRes_Click(object sender, RoutedEventArgs e)
         {
-            //hcx.Reservations.Remove(selectedRes);
-            //hcx.SaveChanges();
+            hcx.Reservations.Remove(selectedRes);
+            hcx.SaveChanges();
 
-            //ContentGrid.Visibility = Visibility.Hidden;
+            ContentGrid.Visibility = Visibility.Hidden;
 
-            //ResList.DataContext = null;
+            ResList.DataContext = null;
 
-            //if (username == null)
-            //{
-            //    hcx.Reservations.Load();
-            //    var oppdatertRes = hcx.Reservations;
-            //    ResList.DataContext = oppdatertRes.Local;
-            //}
-            //else
-            //{
-            //    hcx.Users.Load();
-            //    var user = hcx.Users.Local.FirstOrDefault(u => u.Email.Equals(username));
-            //    ResList.DataContext = user.Reservations;
-            //}
-        }
-
-        private void ResList_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
-
+            if (username == null)
+            {
+                hcx.Reservations.Load();
+                var updatedRes = hcx.Reservations;
+                ResList.DataContext = updatedRes.Local.ToObservableCollection();
+            }
+            else
+            {
+                hcx.Users.Load();
+                var user = hcx.Users.Local.FirstOrDefault(u => u.Email.Equals(username));
+                ResList.DataContext = user.Reservations;
+            }
         }
     }
 }
