@@ -44,7 +44,27 @@ namespace FrontDesk
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-            Todo roo = new Todo();
+            if (sender != null) {
+
+                Todo td = new Todo() {
+                    Roomid = r.Roomnr,
+                    Cleaned = !(bool)AddCleaning.IsChecked,
+                    Maintained = !(bool)AddMaintenance.IsChecked,
+                    Serviced = !(bool)AddService.IsChecked,
+                    Notes = AddNotes.Text,
+                };
+                if (!td.Cleaned || !td.Maintained || !td.Serviced)
+                {
+                    hcx.Todos.Add(td);
+                    hcx.SaveChanges();
+                } else
+                {
+                    Debug.WriteLine("You tried to submit an empty request");
+                }
+            } else {
+                Debug.WriteLine("Ermagerd!");
+            }
+            this.NavigationService.Navigate(new RoomPage(hcx, r));
         }
 
         private void TaskList_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
