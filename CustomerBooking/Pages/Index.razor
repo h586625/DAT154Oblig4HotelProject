@@ -12,6 +12,17 @@
 
 <h3>Booking</h3>
 
+@foreach(var room in rooms)
+{
+    <tr>
+        <td>@room.Roomnr</td>
+        <td>@room.Beds</td>
+        <td>@room.Size</td>
+        <td>@room.Price</td>
+        <td>@room.Available</td>
+        <td>@room.InOrder</td>
+    </tr>
+}
 
 
 @*<PageTitle>Login</PageTitle>
@@ -51,17 +62,25 @@
 
 @code {
 
-    private User user = new User();
+    private Room room = new Room();
+    public List<Room> rooms { get; set; } = new List<Room>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        this.rooms = await Ctx.Rooms.ToListAsync();
+    }
+
+   // private User user = new User();
 
     private string errorMessage = string.Empty;
 
     private string returnUrl = string.Empty;
 
     //private IList<User> users;
-    public List<User> users { get; set; } = new List<User>();
+   //public List<User> users { get; set; } = new List<User>();
 
 
-    protected override async Task OnInitializedAsync()
+   /* protected override async Task OnInitializedAsync()
     {
         this.users = await Ctx.Users.ToListAsync();
     }
@@ -70,5 +89,5 @@
     {
        // await..
     }
-    
+   */
 }
