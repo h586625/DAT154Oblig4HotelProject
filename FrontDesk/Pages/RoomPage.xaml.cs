@@ -90,5 +90,13 @@ namespace FrontDesk
             //t = null;
             //TTNS.Visibility = Visibility.Hidden;
         }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            hcx.Rooms.Remove(r);
+            hcx.SaveChanges();
+            RoomsPage roomsPage = new(hcx);
+            this.NavigationService.Navigate(roomsPage);
+        }
     }
 }

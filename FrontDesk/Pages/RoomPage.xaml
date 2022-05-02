@@ -30,6 +30,10 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
+        <Button Grid.Column="6" Name="Delete" Content="Delete room" HorizontalAlignment="Left" Margin="0,25,0,0" Padding="5"
+                Width="Auto" Height="50"
+                VerticalAlignment="Center" Background="#FF900404" Foreground="White" Click="Delete_Click" />
+        
         <TextBlock Name ="RoomNumber" Grid.Column="1" Grid.Row="0"  Text="Room Number " FontSize="20"/>
         
         <TextBlock Name="Beds" Grid.Column="1" Grid.Row="5"  Text="Beds: " Grid.ColumnSpan="2"/>
