@@ -1,0 +1,24 @@
+﻿@page "/add_reservation"
+
+<PageTitle>Add Reservation</PageTitle>
+
+@using BlazingCustomerBooking.Data
+@inject ReservationService ReservationService
+
+<h1>Add Reservation</h1>
+
+
+
+<!-- TODO: Add a Date from/to + num beds option before we look up available rooms -->
+<!-- TODO: Display table/list of available rooms given date range -->
+
+<button class="btn btn-primary" @onclick="OnAddReservationClicked">Add Reservation</button>
+
+@code {
+    private Library.Models.Reservation reservation;
+
+    private void OnAddReservationClicked()
+    {
+        
+    }
+}

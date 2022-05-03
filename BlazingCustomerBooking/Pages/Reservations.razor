@@ -1,0 +1,54 @@
+﻿@page "/reservations"
+
+<PageTitle>Reservations</PageTitle>
+
+@using BlazingCustomerBooking.Data
+@inject ReservationService ReservationService
+
+<h1>Reservations</h1>
+
+<p>Reservation Overview</p>
+
+@if (reservations == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Room Number</th>
+                <th>User Id</th>
+                <th>Date Start</th>
+                <th>Date End</th>
+                <th>Checked In</th>
+                <th>Checked Out</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var reservation in reservations)
+            {
+                <tr>
+                    <td>@reservation.Id</td>
+                    <td>@reservation.Roomnr</td>
+                    <td>@reservation.Userid</td>
+                    <td>@reservation.DateStart</td>
+                    <td>@reservation.DateEnd</td>
+                    <td>@reservation.CheckedIn</td>
+                    <td>@reservation.CheckedOut</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private Library.Models.Reservation[]? reservations;
+
+    protected override async Task OnInitializedAsync()
+    {
+        reservations = await ReservationService.GetAllReservations();
+    }
+}
