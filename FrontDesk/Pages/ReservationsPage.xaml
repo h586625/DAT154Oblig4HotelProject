@@ -11,13 +11,17 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
 
         <Label Grid.Column="0" Content="Hotel Scandic" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="auto" Width="auto" FontSize="24"/>
         <Label Grid.Column="0" Content="Reservations:" HorizontalAlignment="Left" Margin="19,62,0,0" VerticalAlignment="Top"/>
 
-        <ListView ItemsSource="{Binding}" Grid.Column="0" Name="ResList" HorizontalAlignment="Left" Height="376" Margin="115,64,0,0" VerticalAlignment="Top" Width="auto">
+        <ListView ItemsSource="{Binding}" Grid.Column="0" Grid.Row="0" Name="ResList" HorizontalAlignment="Left" Height="376" Margin="115,64,0,0" VerticalAlignment="Top" Width="auto">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="80" Header="Room" DisplayMemberBinding="{Binding Path=Roomnr}"></GridViewColumn>
@@ -31,34 +35,34 @@
             </ListView.View>
         </ListView>
 
-        <Grid Name="ContentGrid" Grid.Column="1" Margin="0,0,218,0" Visibility="Hidden">
-            <StackPanel HorizontalAlignment="Left" Height="473" Margin="10,52,0,0" VerticalAlignment="Top" Width="262">
+        <Grid Name="ContentGrid" Margin="115,40,0,0" Visibility="Hidden" Grid.Row="1">
+            <StackPanel HorizontalAlignment="Left" Height="Auto" Margin="10,52,0,0" VerticalAlignment="Top" Width="262">
                 <TextBlock>
                     <Bold>Reservation id: </Bold>
                 </TextBlock>
                 <TextBlock Name="ResId"></TextBlock>
 
                 <TextBlock>
-                    <Bold>Room id: </Bold>
+                    <Bold>Roomnr: </Bold>
                 </TextBlock>
-                <TextBlock Name="RoomId"></TextBlock>
+                <TextBlock Name="Roomnr"></TextBlock>
 
                 <Button Name="CheckIn" Content="Check in" Click="CheckIn_Click"></Button>
-                <Button Name="othrAvbRooms" Content="Other Available Rooms" Click="AvbRooms_Click"/>
+                <Button Name="othrAvbRooms" Content="Other available rooms" Click="AvbRooms_Click"/>
 
                 <TextBlock Name="AvbRoomsTxt" Visibility="Hidden">
                     <Bold>Available Rooms: </Bold>
                 </TextBlock>
-                <ListView Height="170" Name="AvailableRooms" ItemsSource="{Binding}" Grid.Column="1" Visibility="Hidden">
+                <ListView Height="170" Name="AvailableRooms" ItemsSource="{Binding}" Grid.Row="1" Visibility="Hidden">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Room Nr" DisplayMemberBinding="{Binding Path=RoomId}"></GridViewColumn>
+                            <GridViewColumn Header="Roomnr" DisplayMemberBinding="{Binding Path=Roomnr}"></GridViewColumn>
                         </GridView>
                     </ListView.View>
                 </ListView>
 
-                <Button Name="ChangeRoomBtn" Content="Change Room" Click="ChangeRoom_Click" Visibility="Hidden"></Button>
-                <Button Name="DeleteResBtn" Content="Delete Reservation" Click="DelRes_Click"></Button>
+                <Button Name="ChangeRoomBtn" Content="Change room" Click="ChangeRoom_Click" Visibility="Hidden"></Button>
+                <Button Name="DeleteResBtn" Content="Delete reservation" Click="DelRes_Click"></Button>
             </StackPanel>
         </Grid>
     </Grid>
