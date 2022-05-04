@@ -7,18 +7,46 @@
 
 <h1>Add Reservation</h1>
 
+<label for="DateStart">Book from date:</label><br>
+<input type="text" id="DateStart" DateStart="DateStart"><br>
+ <label for="¨DateEnd">Book end date:</label><br>
+ <input type="text" id="DateEnd" DateEnd="DateEnd">
+
+ <InputText id="DateStart" @bind-Value="reservation.DateStart" class="form-control" />
 
 
+ <button class="btn btn-primary" @onclick="GetAvailableRooms">See Available Rooms</button>
+
+
+  @*foreach (var room in rooms)
+            {
+                <tr>
+                    <td>@room.Available</td>
+                    </tr>
+            }
+            *@
 <!-- TODO: Add a Date from/to + num beds option before we look up available rooms -->
 <!-- TODO: Display table/list of available rooms given date range -->
 
-<button class="btn btn-primary" @onclick="OnAddReservationClicked">Add Reservation</button>
+@*<button class="btn btn-primary" @onclick="OnAddReservationClicked">Add Reservation</button>
 
+*@
 @code {
     private Library.Models.Reservation reservation;
+    private Library.Models.Room[]? rooms;
+
+    private DateTime dateStart { get; set; }
+    private DateTime dateEnd { get; set; }
+
 
     private void OnAddReservationClicked()
     {
-        
+
+    }
+
+    private void GetAvailableRooms()
+    {
+        dateStart = reservation.DateStart;
+        dateEnd = reservation.DateEnd;
     }
 }
