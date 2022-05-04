@@ -3,51 +3,69 @@
 <PageTitle>Add Reservation</PageTitle>
 
 @using BlazingCustomerBooking.Data
+@using Microsoft.AspNetCore.Mvc
+@using Microsoft.AspNetCore.Components;
 @inject ReservationService ReservationService
 
 <h1>Add Reservation</h1>
 
 <label for="DateStart">Book from date:</label><br>
-<input type="text" id="dateStart" DateStart="DateStart"><br>
+<input type="text" id="dateStart" @bind="dateStart"><br>
  
-<label for="¨DateEnd">Book to date:</label><br>
- <input type="text" id="¨dateEnd" DateEnd="DateEnd">
+<label for="DateEnd">Book to date:</label><br>
+<input type="text" id="dateEnd" @bind="dateEnd">
 
+<button class="btn btn-primary" @onclick="GetAvailableRooms">See Available Rooms</button>
 
+<p />
 
-
- <button class="btn btn-primary" @onclick="GetAvailableRooms">See Available Rooms</button>
-
-
-  @*foreach (var room in rooms)
-            {
+@if(foundRooms) {
+    @foreach (var room in rooms)
+    {
+        <table>
+            <thead>
                 <tr>
-                    <td>@room.Available</td>
-                    </tr>
-            }
-            *@
+                    <th>Roomnr</th>
+                    <th>Beds</th>
+                    <th>Size</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@room.Roomnr</td>
+                    <td>@room.Beds</td>
+                    <td>@room.Size</td>
+                    <td>@room.Price</td>
+                </tr>
+            </tbody>
+        </table>
+    }
+}
+
 <!-- TODO: Add a Date from/to + num beds option before we look up available rooms -->
 <!-- TODO: Display table/list of available rooms given date range -->
 
-@*<button class="btn btn-primary" @onclick="OnAddReservationClicked">Add Reservation</button>
-
+@*
+    button class="btn btn-primary" @onclick="OnAddReservationClicked">Add Reservation</button>
 *@
+
 @code {
     private Library.Models.Reservation reservation;
     private Library.Models.Room[]? rooms;
 
-    private DateTime dateStart { get; set; }
-    private DateTime dateEnd { get; set; }
+    private String dateStart { get; set; }
+    private String dateEnd { get; set; }
 
+    private Boolean foundRooms = false;
 
-    private void OnAddReservationClicked()
+    protected async Task GetAvailableRooms()
     {
+        rooms = await ReservationService.GetAvailableRooms(
+            DateTime.Parse(dateStart),
+            DateTime.Parse(dateEnd)
+        );
 
-    }
-
-    private void GetAvailableRooms()
-    {
-        dateStart = reservation.DateStart;
-        dateEnd = reservation.DateEnd;
+        foundRooms = true;
     }
 }
