@@ -42,6 +42,14 @@ namespace BlazingCustomerBooking.Data
 
         public Task<Reservation> CreateReservation(Room? room)
         {
+
+            if(room.Available)
+            {
+                var reservation = new Reservation();
+                reservation.Roomnr = room.Roomnr;
+                room.Available = false;
+
+            }
             return 
            // TODO: Add reservation logic given a room (might need more parameters to make a full reservation?
         }

@@ -8,11 +8,12 @@
 <h1>Add Reservation</h1>
 
 <label for="DateStart">Book from date:</label><br>
-<input type="text" id="DateStart" DateStart="DateStart"><br>
- <label for="¨DateEnd">Book end date:</label><br>
- <input type="text" id="DateEnd" DateEnd="DateEnd">
+<input type="text" id="dateStart" DateStart="DateStart"><br>
+ 
+<label for="¨DateEnd">Book to date:</label><br>
+ <input type="text" id="¨dateEnd" DateEnd="DateEnd">
 
- <InputText id="DateStart" @bind-Value="reservation.DateStart" class="form-control" />
+
 
 
  <button class="btn btn-primary" @onclick="GetAvailableRooms">See Available Rooms</button>
