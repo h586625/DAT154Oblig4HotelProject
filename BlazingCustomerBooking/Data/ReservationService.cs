@@ -24,11 +24,6 @@ namespace BlazingCustomerBooking.Data
         [HttpGet("AvailableRooms")]
         public Task<Room[]?> GetAvailableRooms(DateTime start, DateTime end)
         {
-            // TODO: Move this data into the function parameters
-
-            // DateTime start = DateTime.Today;
-            // DateTime end = DateTime.Now;
-
             // This returned errors
             //return Task.FromResult(Library.Controller.GetAvailableRooms(_ctx, 1, 1, DateTime.Now, DateTime.Now)?.ToArray());
 
@@ -49,7 +44,7 @@ namespace BlazingCustomerBooking.Data
 
         public Task<Reservation> CreateReservation(Room? room)
         {
-
+            //Not correct
             if(room.Available)
             {
                 var reservation = new Reservation();
