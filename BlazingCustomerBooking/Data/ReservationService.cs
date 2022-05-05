@@ -22,7 +22,7 @@ namespace BlazingCustomerBooking.Data
         }
 
         [HttpGet("AvailableRooms")]
-        public Task<Room[]?> GetAvailableRooms(DateTime start, DateTime end)
+        public Task<Room[]?> GetAvailableRooms(DateTime start, DateTime end, int beds)
         {
             // This returned errors
             //return Task.FromResult(Library.Controller.GetAvailableRooms(_ctx, 1, 1, DateTime.Now, DateTime.Now)?.ToArray());
@@ -36,7 +36,8 @@ namespace BlazingCustomerBooking.Data
                         || reservation.DateStart < start && reservation.DateEnd > start
                         // If there is a reservation that starts before the end date but ends after the end date.
                         || reservation.DateStart < end && reservation.DateEnd >= end
-                        || DateTime.Now >= start
+                        || DateTime.Now >= start && room.Beds >= beds)
+                        
                     )
                  )
                  .ToArray());

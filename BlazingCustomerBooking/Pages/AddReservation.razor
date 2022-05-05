@@ -15,6 +15,9 @@
 <label for="DateEnd">Book to date:</label><br>
 <input type="text" id="dateEnd" @bind="dateEnd">
 
+<label for="Bed">How many beds?:</label><br>
+<input type="text" id="bed" @bind="bed">
+
 <button class="btn btn-primary" @onclick="GetAvailableRooms">See Available Rooms</button>
 
 <p />
@@ -56,6 +59,7 @@
 
     private String dateStart { get; set; }
     private String dateEnd { get; set; }
+    private String bed { get; set; }
 
     private Boolean foundRooms = false;
 
@@ -63,8 +67,9 @@
     {
         rooms = await ReservationService.GetAvailableRooms(
             DateTime.Parse(dateStart),
-            DateTime.Parse(dateEnd)
-        );
+            DateTime.Parse(dateEnd),
+            int.Parse(bed)
+    );
 
         foundRooms = true;
     }
