@@ -22,7 +22,7 @@ namespace BlazingCustomerBooking.Data
         }
 
         [HttpGet("AvailableRooms")]
-        public Task<Room[]?> GetAvailableRooms(DateTime start, DateTime end, int beds)
+        public Task<Room[]?> GetAvailableRooms(DateTime start, DateTime end)
         {
             // This returned errors
             //return Task.FromResult(Library.Controller.GetAvailableRooms(_ctx, 1, 1, DateTime.Now, DateTime.Now)?.ToArray());
