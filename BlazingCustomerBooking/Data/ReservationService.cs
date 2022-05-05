@@ -36,9 +36,9 @@ namespace BlazingCustomerBooking.Data
                         || reservation.DateStart < start && reservation.DateEnd > start
                         // If there is a reservation that starts before the end date but ends after the end date.
                         || reservation.DateStart < end && reservation.DateEnd >= end
-                        || DateTime.Now >= start && room.Beds >= beds)
-                        
-                    )
+                        || DateTime.Now >= start   
+                        //|| room.Beds >= int.Parse(beds)
+                        )
                  )
                  .ToArray());
         }
