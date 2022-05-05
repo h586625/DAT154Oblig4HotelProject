@@ -8,3 +8,9 @@
 @using Microsoft.JSInterop
 @using BlazingCustomerBooking
 @using BlazingCustomerBooking.Shared
+@using BlazingCustomerBooking.Pages
+
+@*attribute [AllowAnonymous]
+*@
+
+@attribute [Authorize(Policy = "KnownUsersOnly")]

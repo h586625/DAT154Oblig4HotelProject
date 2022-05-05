@@ -1,19 +1,66 @@
-﻿@inherits LayoutComponentBase
+﻿@using BlazingCustomerBooking.Auth
+@using Microsoft.AspNetCore.Http
+@inherits LayoutComponentBase
+
+@inject IHttpContextAccessor httpContextAccessor
+@inject NavigationManager navigationManager
+@inject BlazorAuthenticationStateProvider authStateProvider
 
 <PageTitle>Blazing Customer Booking</PageTitle>
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+<AuthorizeView>
+    <Authorized>
+        <div class="page">
+            <div class="sidebar">
+                <NavMenu />
+            </div>
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+            <main>
+                <div class="top-row">
+                    <button type="button" class="btn btn-link ml-md-auto" @onclick="@LogoutClick">Logout</button>
+                </div>
+
+                <article class="content px-4">
+                    @Body
+                </article>
+            </main>
         </div>
+    </Authorized>
+    <NotAuthorized>
+        <div class="page">
+            <div class="sidebar">
+                <NavMenu />
+            </div>
 
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
-</div>
+            <main>
+                <article class="content px-4">
+                    @Body
+                </article>
+            </main>
+        </div>
+    </NotAuthorized>
+    <Authorizing>
+        @Body
+    </Authorizing>
+</AuthorizeView>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        var state = await authStateProvider.GetAuthenticationStateAsync();
+        var user = state.User;
+        if (user != null)
+        {
+            if (httpContextAccessor.HttpContext != null)
+            {
+                httpContextAccessor.HttpContext.User = user;
+            }
+
+        }
+    }
+    async Task LogoutClick()
+    {
+        authStateProvider.SignOut();
+        navigationManager.NavigateTo("/login");
+    }
+}

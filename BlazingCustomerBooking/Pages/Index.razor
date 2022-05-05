@@ -1,7 +1,14 @@
 ﻿@page "/"
-
 <PageTitle>Blazing Customer Booking</PageTitle>
 
-<h1>Welcome to Blazing Customer Booking!</h1>
+<h1>Blazing Customer Booking!</h1>
 
-This is a blazing customer booking application!
+<AuthorizeView Policy = "KnownUsersOnly">
+    <Authorized>
+        <h1>Hello @context.User.Identity.Name !!</h1>
+        <p>Welcome to Blazing Customer Booking.</p>
+    </Authorized>
+    <Authorizing>
+        <h1>Loading ...</h1>
+    </Authorizing>
+</AuthorizeView>

@@ -1,12 +1,52 @@
-﻿<Router AppAssembly="@typeof(App).Assembly">
-    <Found Context="routeData">
-        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
-        <FocusOnNavigate RouteData="@routeData" Selector="h1" />
-    </Found>
-    <NotFound>
-        <PageTitle>Not found</PageTitle>
-        <LayoutView Layout="@typeof(MainLayout)">
-            <p role="alert">Sorry, there's nothing at this address.</p>
-        </LayoutView>
-    </NotFound>
-</Router>
+﻿@using BlazingCustomerBooking.Auth
+@inject BlazorAuthenticationStateProvider authStateProvider
+
+<CascadingAuthenticationState>
+    <Router AppAssembly="@typeof(App).Assembly">
+        <Found Context="routeData">
+            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="typeof(MainLayout)">
+                <NotAuthorized>
+                    @if (IsAuthenticated().Result == false)
+                    {
+                        <RedirectToLogin />
+                    }
+                    else
+                    {
+                        <p>You are not authorized to access this resource.</p>
+                        <div class="top-row">
+                            <button type="button" class="btn btn-link ml-md-auto" @onclick="@LogoutClick">Logout</button>
+                        </div>
+                    }
+                </NotAuthorized>
+                <Authorizing>
+                    Authorizing...
+                </Authorizing>
+            </AuthorizeRouteView>
+            <FocusOnNavigate RouteData="@routeData" Selector="h1"/>
+        </Found>
+        <NotFound>
+            <PageTitle>Not found</PageTitle>
+            <div>Page not found.</div>
+        </NotFound>
+    </Router>
+</CascadingAuthenticationState>
+
+
+@code {
+    async Task<bool> IsAuthenticated()
+    {
+        var state = await authStateProvider.GetAuthenticationStateAsync();
+        var user = state.User;
+        if (user != null)
+        {
+            return user.Identity.IsAuthenticated;
+        }
+
+        return false;
+    }
+
+    async Task LogoutClick()
+    {
+        authStateProvider.SignOut();
+    }
+}
